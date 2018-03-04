@@ -107,10 +107,15 @@ namespace DiplomacyGameGifCreator
                 animatedGif.Frames.AddFrame(frameData);
             }
 
+            var frameDelay = 50; // Half a second
+
             foreach (var frame in animatedGif.Frames)
             {
-                frame.MetaData.FrameDelay = 50;
+                frame.MetaData.FrameDelay = frameDelay;
             }
+
+            var lastFrame = animatedGif.Frames[animatedGif.Frames.Count - 2];
+            lastFrame.MetaData.FrameDelay = frameDelay * 3;
 
             using (FileStream output = File.OpenWrite(string.Format("{0}.gif", gameID)))
             {
