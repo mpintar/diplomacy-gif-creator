@@ -94,6 +94,12 @@ namespace DiplomacyGameGifCreator
 
         private static void CreateGif(int gameID)
         {
+            if(images.Count == 0)
+            {
+                Console.WriteLine("Failed to download any images");
+                return;
+            }
+
             var animatedGif = images[0];
             images.RemoveAt(0);
 
